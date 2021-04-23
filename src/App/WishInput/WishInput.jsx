@@ -7,7 +7,7 @@ const WishInput = ({ defaultValue, onNewWish }) => {
   const [newWishText, setNewWishText] = useState(defaultValue);
   return (
     <fieldset className="wish-input">
-      <legend className="wish-input__label">New wish</legend>
+      <legend className="wish-input__label">Nuevos deseos</legend>
       <input
         className="wish-input__field"
         value={newWishText}

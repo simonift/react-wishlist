@@ -30659,7 +30659,7 @@ var WishInput = function WishInput(_ref) {
     className: "wish-input"
   }, /*#__PURE__*/_react.default.createElement("legend", {
     className: "wish-input__label"
-  }, "New wish"), /*#__PURE__*/_react.default.createElement("input", {
+  }, "Nuevos deseos"), /*#__PURE__*/_react.default.createElement("input", {
     className: "wish-input__field",
     value: newWishText,
     onChange: function onChange(e) {
