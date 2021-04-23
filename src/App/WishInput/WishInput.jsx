@@ -1,33 +1,35 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-const WishInput = ({ onNewWish }) => {
-    const [newWishText, setNewWishText] = useState('');
-    return(
-        <fieldset className="wish-input">
-            <legend className="wish-input__label">Nuevos deseos</legend>
-            <input 
-                className="wish-input_field" 
-                placeholder="Ingresa tu deseos aquí" 
-                value={newWishText}
-                onChange={e => setNewWishText(e.target.value)}
-                onKeyUp={(e) => {
-                    if (e.key == 'Enter' && newWishText.lenght) {
-                        onNewWish({ done: false, text: newWishText });
-                        setNewWishText('');
-                    }
-                }}
-            />
-        </fieldset>
-    );
+const createWish = text => ({ done: false, text });
+
+const WishInput = ({ defaultValue, onNewWish }) => {
+  const [newWishText, setNewWishText] = useState(defaultValue);
+  return (
+    <fieldset className="wish-input">
+      <legend className="wish-input__label">New wish</legend>
+      <input
+        className="wish-input__field"
+        value={newWishText}
+        onChange={e => setNewWishText(e.target.value)}
+        onKeyUp={(e) => {
+          if (e.key === 'Enter' && newWishText.length) {
+            onNewWish(createWish(newWishText));
+            setNewWishText(defaultValue);
+          }
+        }}
+        placeholder="Enter your wish here"
+      />
+    </fieldset>
+  );
 };
 
 WishInput.propTypes = {
-    onNewWish: PropTypes.func,
+  defaultValue: PropTypes.string,
+  onNewWish: PropTypes.func,
 };
-
 WishInput.defaultProps = {
-    onNewWish: () => {},
+  defaultValue: '',
+  onNewWish: () => {},
 };
-
 export default WishInput;
